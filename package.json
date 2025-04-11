@@ -1,0 +1,46 @@
+{
+  "name": "vizusphere",
+  "version": "1.0.0",
+  "description": "VizuSphere is an elegant web application for creating interactive, circle-based word visualizations. Transform your data into beautiful, draggable circles with sizes proportional to their values to create engaging visual representations.",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "webpack serve --mode development",
+    "build": "webpack --mode production",
+    "build:dev": "webpack --mode development",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shanujha/vizusphere.git"
+  },
+  "keywords": [
+    "visualization",
+    "word-cloud",
+    "interactive",
+    "data-visualization"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shanujha/vizusphere/issues"
+  },
+  "homepage": "https://github.com/shanujha/vizusphere#readme",
+  "devDependencies": {
+    "copy-webpack-plugin": "^11.0.0",
+    "css-loader": "^6.8.1",
+    "dotenv": "^16.3.1",
+    "html-webpack-plugin": "^5.5.3",
+    "mini-css-extract-plugin": "^2.7.6",
+    "style-loader": "^3.3.3",
+    "terser-webpack-plugin": "^5.3.9",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
+  },
+  "dependencies": {
+    "codemirror": "5.65.13",
+    "html2canvas": "^1.4.1",
+    "jsonlint": "^1.6.3",
+    "path-browserify": "1.0.1"
+  }
+}

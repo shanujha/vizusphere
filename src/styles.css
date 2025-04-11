@@ -1,0 +1,161 @@
+/* Main styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.6;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+#word-cloud-container {
+    width: 100%;
+    height: 500px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+    transition: background-color 0.2s;
+}
+
+/* Special class for when we're exporting to transparent PNG */
+#word-cloud-container.transparent-for-export {
+    background-color: transparent !important;
+    box-shadow: none !important;
+}
+
+.word-circle {
+    position: absolute;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: grab; /* Change cursor to indicate draggable */
+    color: #333;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    z-index: 1; /* Add z-index for proper layering with overlaps */
+    animation: fadeInScale 0.5s ease-out;
+}
+
+.word-circle:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 10; /* Bring hovered circles to front */
+}
+
+/* Style for circle being actively dragged */
+.word-circle.dragging {
+    cursor: grabbing;
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    transition: none; /* Disable transition during drag for smoother experience */
+    opacity: 0.9;
+}
+
+/* CodeMirror Custom Styling */
+#editor-container {
+    position: relative;
+    height: 150px;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+#editor-container .CodeMirror {
+    height: 100%;
+    font-family: 'Fira Code', 'Consolas', monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    border-radius: 0.5rem;
+}
+
+/* Hide the original textarea that CodeMirror replaces */
+#json-input {
+    display: none;
+}
+
+.CodeMirror-gutters {
+    border-right: none !important;
+    background-color: rgba(0, 0, 0, 0.03) !important;
+}
+
+.CodeMirror-linenumber {
+    color: rgba(107, 114, 128, 0.8) !important;
+}
+
+/* Error lint styles */
+.CodeMirror-lint-tooltip {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 10px;
+    font-size: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.CodeMirror-lint-marker-error, .CodeMirror-lint-message-error {
+    background-image: none;
+    position: relative;
+}
+
+.CodeMirror-lint-marker-error:before {
+    content: '⚠';
+    color: #f44336;
+    position: absolute;
+    left: 2px;
+    top: 0;
+}
+
+/* Status indicator */
+#json-status {
+    transition: color 0.3s;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .button-container {
+        flex-direction: column;
+    }
+    
+    #editor-container {
+        height: 120px;
+    }
+    
+    #word-cloud-container {
+        height: 400px;
+    }
+}
+
+/* Custom animation for circle appearance */
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VizuSphere | Interactive Word Visualization</title>
+    <!-- Tailwind CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Note: webpack will inject the bundled JS and CSS -->
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-indigo-700">VizuSphere</h1>
+            <p class="text-gray-600 mt-2">Create beautiful interactive word visualizations</p>
+        </div>
+        
+        <div id="word-cloud-container" class="mb-6 bg-white rounded-xl shadow-md"></div>
+        
+        <div class="bg-white rounded-xl shadow-md p-6">
+            <div class="flex flex-wrap gap-4 mb-6">
+                <button id="update-btn" class="flex items-center justify-center px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors">
+                    <i class="fas fa-sync-alt mr-2"></i> Update Visualization
+                </button>
+                <button id="download-btn" class="flex items-center justify-center px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors">
+                    <i class="fas fa-download mr-2"></i> Download Image
+                </button>
+                <button id="reset-btn" class="flex items-center justify-center px-4 py-2 bg-amber-500 text-white rounded-lg hover:bg-amber-600 transition-colors">
+                    <i class="fas fa-undo mr-2"></i> Reset Positions
+                </button>
+            </div>
+            
+            <div>
+                <div class="flex justify-between items-center mb-2">
+                    <h3 class="text-lg font-semibold text-gray-700">Input Your Data:</h3>
+                    <div id="json-status" class="text-sm font-medium"></div>
+                </div>
+                <div id="editor-container" class="border border-gray-300 rounded-lg">
+                    <div id="codemirror-editor"></div>
+                    <textarea id="json-input" style="display: none;">
+{
+  "Staff": 5,
+  "Students": 9,
+  "Security Guard": 1,
+  "Teachers": 7,
+  "Administrators": 3,
+  "Visitors": 2
+}
+                    </textarea>
+                </div>
+                <div class="flex justify-between items-center mt-1">
+                    <p class="text-xs text-gray-500">Format: { "Label": value, "Label2": value2, ... }</p>
+                    <button id="format-btn" class="flex items-center justify-center px-3 py-1 bg-indigo-100 text-indigo-700 text-xs font-medium rounded hover:bg-indigo-200 transition-colors">
+                        <i class="fas fa-code mr-1"></i> Format JSON
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="text-center text-gray-500 text-sm mt-8 pb-4">
+        <p>VizuSphere &copy; 2025 | Interactive Data Visualization Tool</p>
+    </footer>
+    <!-- webpack will inject the bundled JS here -->
+</body>
+</html>
